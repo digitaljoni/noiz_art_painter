@@ -1,8 +1,10 @@
 name: noiz_art_painter
-description: A new Flutter package project.
+description: NoizArtPainter provides you with a base and tools to create fullscreen regenerative art.
 version: 0.0.1
-author:
-homepage:
+author: Joennie Sindo (digitaljoni@gmail.com)
+homepage: https://digitaljoni.com/
+repository: https://github.com/digitaljoni/noiz_art_painter
+
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

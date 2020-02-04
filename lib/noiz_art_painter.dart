@@ -2,12 +2,11 @@ library noiz_art_painter;
 
 import 'dart:math';
 import 'dart:ui';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-void renderNoizArt(NoizArt noizArt) {
+void renderNoizArt(NoizArtPainter noizArt) {
   RenderingFlutterBinding(
     root: RenderPositionedBox(
       alignment: Alignment.topLeft,
@@ -18,8 +17,8 @@ void renderNoizArt(NoizArt noizArt) {
   );
 }
 
-class NoizArt extends CustomPainter {
-  NoizArt() {
+class NoizArtPainter extends CustomPainter {
+  NoizArtPainter() {
     init();
   }
 
