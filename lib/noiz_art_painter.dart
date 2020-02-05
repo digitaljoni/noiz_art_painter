@@ -93,6 +93,8 @@ class NoizArtPainter extends CustomPainter {
     }
 
     if (arg1 is num && arg2 is num) {
+      arg1 = arg1.toInt();
+      arg2 = arg2.toInt();
       return (arg2 == 0 ? 0 : arg1) +
           rng.nextInt((arg2 - arg1).abs()).toDouble();
     }
