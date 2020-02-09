@@ -40,6 +40,18 @@ class NoizArtPainter extends CustomPainter {
   bool useFill = true;
   bool useStroke = true;
 
+  final List<Alignment> alignmentList = <Alignment>[
+    Alignment.topLeft,
+    Alignment.topCenter,
+    Alignment.topRight,
+    Alignment.centerLeft,
+    Alignment.center,
+    Alignment.centerRight,
+    Alignment.bottomLeft,
+    Alignment.bottomCenter,
+    Alignment.bottomRight,
+  ];
+
   void init() async {}
 
   Future<void> getSize() async {
@@ -130,9 +142,62 @@ class NoizArtPainter extends CustomPainter {
     return Color(colorInt);
   }
 
+  // background
   void background(Color color) {
     backgroundPaint.color = color;
     screenCanvas.drawPaint(backgroundPaint);
+  }
+
+  void gradientBackground({
+    List<Color> colors,
+  }) {
+    if (colors == null) {
+      final Color color1 = Colors.grey[800];
+      final Color color2 = Colors.black;
+
+      colors = <Color>[
+        color1,
+        color2,
+      ];
+    }
+
+    final Rect fullRect = Rect.fromLTWH(0.0, 0.0, screenWidth, screenHeight);
+
+    final Gradient gradient = LinearGradient(
+      colors: colors,
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+    );
+
+    final Paint gradientPaint = Paint()
+      ..shader = gradient.createShader(fullRect);
+
+    screenCanvas.drawRect(fullRect, gradientPaint);
+  }
+
+  void radialGradientBackground({
+    Alignment center = Alignment.center,
+    double radius = 1.5,
+    List<Color> colors,
+  }) {
+    if (colors == null) {
+      final Color color1 = Colors.grey[800];
+      final Color color2 = Colors.black;
+
+      colors = <Color>[
+        color1,
+        color2,
+      ];
+    }
+
+    final Gradient gradient = RadialGradient(
+      center: center ?? random(alignmentList),
+      radius: radius,
+      colors: colors,
+    );
+
+    final Rect rect = Rect.fromLTWH(0.0, 0.0, screenWidth, screenHeight);
+    screenCanvas.drawPaint(Paint()..shader = gradient.createShader(rect));
   }
 
   void stroke(Color color) {
