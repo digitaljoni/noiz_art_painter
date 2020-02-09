@@ -1,8 +1,6 @@
 name: noiz_art_painter
 description: NoizArtPainter provides you with a base and tools to create fullscreen regenerative art.
-version: 0.0.1
-authors:
-  - digitaljoni@gmail.com
+version: 0.1.0
 homepage: https://digitaljoni.com/
 repository: https://github.com/digitaljoni/noiz_art_painter
 
